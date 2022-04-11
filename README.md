@@ -62,3 +62,12 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## How to run
+This guide asumes that an alias binding ``sail`` to ``./vendor/bin/sail`` already exists.
+
+- Start sail ``sail up``
+- Install composer components ``sail composer install``
+- Install npm components ``sail npm i``
+- Start Laravel Mix ``sail npm run watch`` This will automatically compile javascript and scss on file changes 
+- You should now be able to access the site at [localhost](http://localhost/)
