@@ -72,3 +72,4 @@ This guide asumes that an alias binding ``sail`` to ``./vendor/bin/sail`` alread
 - Migrate database ``sail php artisan migrate``
 - Start Laravel Mix ``sail npm run watch`` This will automatically compile javascript and scss on file changes 
 - You should now be able to access the site at [localhost](http://localhost/)
+- Register/Login can be found at [localhost/login](http://localhost/login)
