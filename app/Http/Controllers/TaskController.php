@@ -37,19 +37,18 @@ class TaskController extends Controller
      */
     public function store(StoreTaskRequest $request)
     {
-        $dateNow = date("Y-m-d H:i:s");
 
         $task = Task::create([
             'name' => $request->title,
             'description' => $request->description,
-            'start'=> $dateNow,
-            'end'=> $dateNow,
-            'numberVolunteerNiceToHave' => 1000,
-            'numberVolunteerNeedToHave' => 5,
-            'description' => 'Vi fjerner alt det skrald folk har efterladt',
-            'meetingPoint' => 'DNS',
-            'udvalg' => 42,
-            'createdBy' => 42,
+            'start'=> $request->start,
+            'end'=> $request->end,
+            'numberVolunteerNiceToHave' => $request->numberVolunteerNiceToHave,
+            'numberVolunteerNeedToHave' => $request->numberVolunteerNeedToHave,
+            'description' =>  $request->description,
+            'meetingPoint' => $request->meetingPoint,
+            'udvalg' => $request->udvalg,
+            'createdBy' => $request->createdBy,
         ]);
 
 
