@@ -24,23 +24,9 @@ class TaskController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-            $this->middleware('auth');
-
-            $dateNow = date("Y-m-d H:i:s");
-            $task = new Task();
-            $task->name = 'Oprydning';
-            $task->start = $dateNow;
-            $task->end = $dateNow;
-            $task->numberVolunteerNiceToHave = 1000;
-            $task->numberVolunteerNeedToHave = 5;
-            $task->description = 'Vi fjerner alt det skrald folk har efterladt';
-            $task->meetingPoint = 'DNS';
-            $task->udvalg = 42;
-            $task->createdBy = 42;
-            $task->save();
-
+    public function create() {
+            //$this->middleware('auth');
+            return view('tasks.create');
     }
 
     /**
@@ -51,7 +37,40 @@ class TaskController extends Controller
      */
     public function store(StoreTaskRequest $request)
     {
-        //
+        $dateNow = date("Y-m-d H:i:s");
+
+        $task = Task::create([
+            'name' => $request->title,
+            'description' => $request->description,
+            'start'=> $dateNow,
+            'end'=> $dateNow,
+            'numberVolunteerNiceToHave' => 1000,
+            'numberVolunteerNeedToHave' => 5,
+            'description' => 'Vi fjerner alt det skrald folk har efterladt',
+            'meetingPoint' => 'DNS',
+            'udvalg' => 42,
+            'createdBy' => 42,
+        ]);
+
+
+
+        /*
+        $dateNow = date("Y-m-d H:i:s");
+        $task = new Task();
+        $task->name = 'Oprydning';
+        $task->start = $dateNow;
+        $task->end = $dateNow;
+        $task->numberVolunteerNiceToHave = 1000;
+        $task->numberVolunteerNeedToHave = 5;
+        $task->description = 'Vi fjerner alt det skrald folk har efterladt';
+        $task->meetingPoint = 'DNS';
+        $task->udvalg = 42;
+        $task->createdBy = 42;
+        $task->save(); */
+
+        if ($task) {
+            return redirect()->route('tasks.index');
+        }
     }
 
     /**
